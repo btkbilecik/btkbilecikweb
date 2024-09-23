@@ -1,13 +1,21 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import {
+	Avatar as Avt,
+	AvatarFallback,
+	AvatarImage,
+} from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Header } from "@/components/custom/header";
+import { Footer } from "@/components/custom/footer";
 
 type UserProfile = {
-	id: string;
-	username: string;
+	username: string | null;
 	full_name: string | null;
 	website: string | null;
 	role: string | null;
 	department: string | null;
+	biography: string | null;
 	avatar_url: string | null;
 };
 
@@ -16,7 +24,9 @@ async function getUserProfile(username: string): Promise<UserProfile | null> {
 
 	const { data: userProfile, error } = await supabase
 		.from("profiles")
-		.select("*")
+		.select(
+			"full_name, username, website, role, department, biography, avatar_url",
+		)
 		.eq("username", username)
 		.single();
 
@@ -38,9 +48,32 @@ export default async function User({
 
 	return (
 		<div>
-			<h1>{profile.username}</h1>
-			<p>{profile.full_name}</p>
-			<p>{profile.website}</p>
+			<Header />
+			<div className="max-w-3xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+				<div className="flex items-center gap-x-3">
+					<div className="shrink-0">
+						<Avt className="shrink-0 size-16 rounded-full">
+							<AvatarImage src={profile.avatar_url || ""} />
+							<AvatarFallback>BTK</AvatarFallback>
+						</Avt>
+					</div>
+					<div className="grow">
+						<h1 className="text-lg font-medium text-gray-800 dark:text-neutral-200">
+							<Badge variant="first">{profile.username}</Badge> -{" "}
+							{profile.full_name}
+						</h1>
+						<p className="text-sm text-gray-600 dark:text-neutral-400">
+							{profile.role}
+						</p>
+					</div>
+				</div>
+				<div className="mt-8">
+					<div className="text-sm text-muted-foreground">
+						{profile.biography}
+					</div>
+				</div>
+			</div>
+			<Footer />
 		</div>
 	);
 }

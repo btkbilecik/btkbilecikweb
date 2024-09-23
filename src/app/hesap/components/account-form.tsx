@@ -57,6 +57,7 @@ const profileSchema = z.object({
 		.max(50, {
 			message: "Bölümünüz en çok 50 harften oluşmalı",
 		}),
+	biography: z.string(),
 	avatar_url: z.string(),
 });
 
@@ -72,6 +73,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 			website: "",
 			role: "",
 			department: "",
+			biography: "",
 			avatar_url: "",
 		},
 	});
@@ -79,7 +81,9 @@ export default function AccountForm({ user }: { user: User | null }) {
 	const getUserProfile = async () => {
 		const { data, error } = await supabase
 			.from("profiles")
-			.select("full_name, username, website, role, department, avatar_url")
+			.select(
+				"full_name, username, website, role, department, biography, avatar_url",
+			)
 			.eq("id", user?.id)
 			.single();
 
@@ -101,6 +105,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 		website,
 		role,
 		department,
+		biography,
 		avatar_url,
 	}: {
 		full_name: string | null;
@@ -108,6 +113,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 		website: string | null;
 		role: string | null;
 		department: string | null;
+		biography: string | null;
 		avatar_url: string | null;
 	}) => {
 		try {
@@ -120,6 +126,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 				website,
 				role,
 				department,
+				biography,
 				avatar_url,
 				updated_at: new Date().toISOString(),
 			});
@@ -139,6 +146,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 			website: values.website,
 			role: values.role,
 			department: values.department,
+			biography: values.biography,
 			avatar_url: values.avatar_url,
 		});
 	};

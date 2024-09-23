@@ -30,6 +30,9 @@ import { AnimatedInput as Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/custom/header";
 import { Footer } from "@/components/custom/footer";
+import { AlertCircle } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const formSchema = z.object({
 	email: z
@@ -54,7 +57,16 @@ export default function LoginPage() {
 	return (
 		<>
 			<Header />
+
 			<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+				<Alert variant="destructive">
+					<AlertCircle className="h-4 w-4" />
+					<AlertTitle>Dikkat</AlertTitle>
+					<AlertDescription>
+						Şuanda oluşturulan üyelikler silinecektir. Tam sürümün çıkmasını
+						sosyal medya kanallarımızdan takip edin!
+					</AlertDescription>
+				</Alert>
 				<div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8">
 					<Card>
 						<CardHeader>

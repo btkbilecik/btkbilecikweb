@@ -5,12 +5,12 @@ import { Hero } from "@/components/custom/hero";
 import { SSS } from "@/components/custom/sss";
 
 export default function Home() {
-	return (
-		<div>
-			<Header />
-			<Hero />
-			<SSS />
-			<Footer />
-		</div>
-	);
+  return (
+    <div>
+      <Header />
+      <Hero />
+      <SSS />
+      <Footer />
+    </div>
+  );
 }

@@ -21,7 +21,7 @@ export function Footer() {
 						<li className="inline-block relative pe-4 text-xs last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-1.5 before:-translate-y-1/2 before:size-[3px] before:rounded-full before:bg-first">
 							<Link
 								className="text-xs text-muted-foreground underline hover:text-first hover:decoration-2 focus:outline-none focus:decoration-2"
-								href="#"
+								href="https://instagram.com/btkbilecik"
 							>
 								Instagram
 							</Link>
@@ -29,7 +29,7 @@ export function Footer() {
 						<li className="inline-block relative pe-4 text-xs last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-1.5 before:-translate-y-1/2 before:size-[3px] before:rounded-full before:bg-first">
 							<Link
 								className="text-xs text-muted-foreground underline hover:text-first hover:decoration-2 focus:outline-none focus:decoration-2"
-								href="#"
+								href="https://linkedin.com/company/bilgisayar-ve-teknoloji-kul%C3%BCb%C3%BC"
 							>
 								Linkedin
 							</Link>
@@ -37,7 +37,7 @@ export function Footer() {
 						<li className="inline-block pe-4 text-xs">
 							<Link
 								className="text-xs text-muted-foreground underline hover:text-first hover:decoration-2 focus:outline-none focus:decoration-2"
-								href="#"
+								href="https://github.com/btkbilecik"
 							>
 								Github
 							</Link>
